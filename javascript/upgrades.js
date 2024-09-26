@@ -67,7 +67,7 @@ export const upgrades = [
        id: 5, 
        name: "Better Auto-Click",
        description: "Doubles Auto Clicker Speed",
-       cost: 1,
+       cost: 1000,
        multiplyCost: 123,
        amount: 0,
        visible: false,
