@@ -39,3 +39,27 @@ export function loadGame() {
         console.log('No saved game found.');
     }
 }
+
+export function resetGame() {
+    // Reset game stats
+    gameStats.clicks = 0;
+    gameStats.totalClicks = 0;
+    gameStats.amountPerClick = 1;
+    gameStats.autoClicksPerSecond = 0;
+    gameStats.clickMultiplier = 1;
+    gameStats.goldenClickChance = 0;
+    gameStats.goldenClickMultiplier = 1;
+    gameStats.amountOfUpgrades = 0;
+
+    // Reset upgrades
+    upgrades.forEach(upgrade => {
+        upgrade.amount = 0;
+        upgrade.cost = Math.floor(upgrade.cost / upgrade.multiplyCost); // Reset cost to initial value
+        upgrade.visible = false; // Hide all upgrades
+    });
+
+    // Clear saved data from localStorage
+    localStorage.removeItem('clickerGameSave');
+
+    console.log('Game has been reset!');
+}

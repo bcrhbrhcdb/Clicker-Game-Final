@@ -1,7 +1,7 @@
 import { upgrades } from "./upgrades.js";
 import { gameStats } from "./gameStats.js";
 import { checkUpgrades, purchaseUpgrade, updateUpgradeDisplay } from "./upgradeFunctions.js";
-import { saveGame, loadGame } from "./saveGame.js"; // Import the save/load functions
+import { saveGame, loadGame, resetGame } from "./saveGame.js"; // Import the save/load/reset functions
 
 // DOM elements
 const clicker = document.getElementById("clickButton");
@@ -10,6 +10,7 @@ const totalClicksDisplay = document.getElementById("totalClicks");
 const clicksDisplay = document.getElementById("clicks");
 const cpsDisplay = document.getElementById("cps");
 const upgradeContainer = document.getElementById("upgradeContainer");
+const resetButton = document.getElementById("resetGame"); // Get reference to reset button
 
 // Load game on startup
 loadGame(); // Call loadGame here
@@ -80,4 +81,20 @@ upgradeContainer.addEventListener('click', (event) => {
     }
 });
 
+// Reset Game Functionality
+// Reset Game Functionality
+resetButton.addEventListener('click', () => {
+    // Confirm reset action
+    const isConfirmed = confirm('now or never goofy ah goober');
+
+    if (isConfirmed) {
+        resetGame(); // Call the reset function to clear everything.
+        alert('your save was reset. Why? yo goofy goober looking ah completed the game but idk'); // Notify user of reset.
+        location.reload(); // Reload the page after resetting.
+    } else {
+        alert('yo ah was scared goober.'); // Notify user that reset was canceled.
+    }
+});
+
+// Exporting Game Stats for other modules.
 export { gameStats };
