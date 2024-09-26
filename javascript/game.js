@@ -1,4 +1,3 @@
-alert("!!WARNING!! There will be many data wipes, as this game is still in a huge work in progress. Please email me for any questions or suggestions at apet2804@mpsedu.org. Thanks for playing!")
 import { upgrades } from "./upgrades.js";
 import { gameStats } from "./gameStats.js";
 import { checkUpgrades, purchaseUpgrade, updateUpgradeDisplay } from "./upgradeFunctions.js";
@@ -18,18 +17,26 @@ loadGame(); // Call loadGame here
 
 // Click function
 clicker.addEventListener('click', () => {
+    let additionalClicks = gameStats.amountPerClick; // Base click value
+
+    // Check for Double Trouble effect
+    if (upgrades[2].amount > 0) { // Assuming Double Trouble is at index 2
+        additionalClicks *= upgrades[2].effect.clickMultiplier; // Double the clicks if purchased
+    }
+
+    // Regular click value application
+    gameStats.clicks += additionalClicks;
+    gameStats.totalClicks += additionalClicks;
+
     // Check if Golden Touch is active
     if (Math.random() < gameStats.goldenClickChance) {
-        const goldenClickValue = gameStats.amountPerClick * gameStats.goldenClickMultiplier;
+        const goldenClickValue = additionalClicks * upgrades[3].effect.goldenClickMultiplier; // Assuming Golden Touch is at index 3
         gameStats.clicks += goldenClickValue;
         gameStats.totalClicks += goldenClickValue;
+        
         console.log(`Golden Click! Earned ${goldenClickValue} clicks!`);
-    } else {
-        // Regular click value application if Golden Touch does not trigger
-        gameStats.clicks += gameStats.amountPerClick;
-        gameStats.totalClicks += gameStats.amountPerClick;
     }
-    
+
     updateDisplay();
     checkUpgrades(gameStats.totalClicks, upgrades, upgradeContainer, (id) => purchaseUpgrade(id, upgrades));
     
@@ -54,7 +61,9 @@ setInterval(() => {
     if (gameStats.autoClicksPerSecond > 0) {
         gameStats.clicks += gameStats.autoClicksPerSecond;
         gameStats.totalClicks += gameStats.autoClicksPerSecond;
+        
         updateDisplay();
+        
         checkUpgrades(gameStats.totalClicks, upgrades, upgradeContainer, (id) => purchaseUpgrade(id, upgrades));
         
         // Save the game after each auto-click
@@ -65,8 +74,10 @@ setInterval(() => {
 // Event delegation for upgrade purchases
 upgradeContainer.addEventListener('click', (event) => {
     const upgradeButton = event.target.closest('.upgrade-button');
+    
     if (upgradeButton) {
         const upgradeId = parseInt(upgradeButton.id.split('-')[1]);
+        
         const purchaseSuccessful = purchaseUpgrade(upgradeId, upgrades);
         
         // Always update the display after trying to purchase an upgrade
@@ -83,18 +94,16 @@ upgradeContainer.addEventListener('click', (event) => {
 });
 
 // Reset Game Functionality
-// Reset Game Functionality
 resetButton.addEventListener('click', () => {
-    // Confirm reset action
-    const isConfirmed = confirm('now or never goofy ah goober');
+   const isConfirmed = confirm('Are you sure you want to reset the game? This action cannot be undone.');
 
-    if (isConfirmed) {
-        resetGame(); // Call the reset function to clear everything.
-        alert('your save was reset. Why? yo goofy goober looking ah completed the game but idk'); // Notify user of reset.
-        location.reload(); // Reload the page after resetting.
-    } else {
-        alert('yo ah was scared goober.'); // Notify user that reset was canceled.
-    }
+   if (isConfirmed) {
+       resetGame(); 
+       alert('Your save was reset.');
+       location.reload(); 
+   } else {
+       alert('Reset canceled.');
+   }
 });
 
 // Exporting Game Stats for other modules.
