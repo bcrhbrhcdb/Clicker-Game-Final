@@ -4,20 +4,21 @@
     <title>Home</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
     <link rel="stylesheet" href="styles.css" />
+    <linl rel="icon" src="assets/icons/favicon.ico" />
     <script type="module" src="script.js"></script>
   </head>
   <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
     <main>
-      <h1>Home page</h1>
+      <h1>Clicker Game</h1>
+      <p>Clicks: <span id="clicks">0</span></p>
+      <button id="clickButton" type="button">Click Button</button>
+      <footer>
+        <br>
+        <p>Total Clicks: <span id="totalClicks">0</span></p>
+        <p>Amount Per Click: <span id="amountPerClick">1</span></p>
+      </footer>
     </main>
+    <script type="module" src="/javascript/game.js"></script>
   </body>
 </html>
