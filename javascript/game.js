@@ -1,3 +1,4 @@
+alert("!!WARNING!! There will be many data wipes, as this game is still in a huge work in progress. Please email me for any questions or suggestions at apet2804@mpsedu.org. Thanks for playing!")
 import { upgrades } from "./upgrades.js";
 import { gameStats } from "./gameStats.js";
 import { checkUpgrades, purchaseUpgrade, updateUpgradeDisplay } from "./upgradeFunctions.js";
