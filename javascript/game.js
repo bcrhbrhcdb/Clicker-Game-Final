@@ -101,8 +101,12 @@ resetButton.addEventListener('click', () => {
        resetGame(); 
        alert('Your save was reset.');
        location.reload(); 
+       //make sure their trash save is gone
+       saveGame()
    } else {
        alert('Reset canceled.');
+        //make sure their trash save is gone
+       saveGame()
    }
 });
 
