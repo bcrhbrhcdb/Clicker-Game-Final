@@ -1,11 +1,14 @@
+// Define upgrade types
 export const upgradeTypes = {
     CLICK: 'click',
     PASSIVE: 'passive',
     MULTIPLIER: 'multiplier',
     SPECIAL: 'special',
-    ONETIME: 'oneTime'
+    ONETIME: 'oneTime', // Added for clarity
+    INCREASEPASSIVE: 'increasePassive' // Fixed casing for consistency
 };
 
+// Define upgrades
 export const upgrades = [
     {
         id: 1,
@@ -17,7 +20,7 @@ export const upgrades = [
         visible: false,
         type: upgradeTypes.CLICK,
         effect: {
-            clickValue: 0.5 // This is the additional value added to each click
+            clickValue: 0.5 // Additional value added to each click
         }
     },
     {
@@ -30,7 +33,7 @@ export const upgrades = [
         visible: false,
         type: upgradeTypes.PASSIVE,
         effect: {
-            autoClicksPerSecond: 0.2 // This adds to auto-clicks per second
+            autoClicksPerSecond: 0.2 // Adds to auto-clicks per second
         }
     },
     {
@@ -38,12 +41,12 @@ export const upgrades = [
         name: "Double Trouble",
         description: "Doubles the additional clicks you get from clicking and from upgrades.",
         cost: 1000,
-        multiplyCost: 123, // Adjusted to be a reasonable multiplier
+        multiplyCost: 1.23, // Adjusted to be a reasonable multiplier
         amount: 0,
         visible: false,
         type: upgradeTypes.MULTIPLIER,
         effect: {
-            clickMultiplier: 2 // This will double the additional click value
+            clickMultiplier: 2 // Doubles the additional click value
         }
     },
     {
@@ -58,17 +61,32 @@ export const upgrades = [
         effect: {
             goldenClickChance: 0.05, // Chance to activate
             goldenClickMultiplier: 10 // Multiplier for golden click
-       },
-       id: 5,
+       }
+    },
+    {
+       id: 5, 
        name: "Better Auto-Click",
        description: "Doubles Auto Clicker Speed",
-       cost: 1000,
+       cost: 1,
        multiplyCost: 123,
        amount: 0,
        visible: false,
-       type: upgradeTypes.PASSIVE,
+       type: upgradeTypes.INCREASEPASSIVE,
        effect: {
-        autoClicksPerSecond: 2,
-      }
+           autoClickMultiplier: 2      
+       }
+   },
+   {
+       id: 6, // Added a one-time upgrade example
+       name: "One-Time Upgrade",
+       description: "This upgrade can only be purchased once.",
+       cost: 5000,
+       multiplyCost: 1.5, 
+       amount: 0, 
+       visible: false, 
+       type: upgradeTypes.ONETIME, 
+       effect:{
+           clickValueBonus : 5 // Example effect for one-time upgrade
+       }
    }
 ];

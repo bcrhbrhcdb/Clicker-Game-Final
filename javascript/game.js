@@ -1,9 +1,9 @@
 import { upgrades } from "./upgrades.js";
 import { gameStats } from "./gameStats.js";
-import { checkUpgrades, purchaseUpgrade, updateUpgradeDisplay } from "./upgradeFunctions.js";
+import { checkUpgrades, purchaseUpgrade } from "./upgradeFunctions.js";
 import { saveGame, loadGame, resetGame } from "./saveGame.js"; 
 
-// DOM elements
+// DOM elements setup.
 const clicker = document.getElementById("clickButton");
 const amountPerClickText = document.getElementById("amountPerClick");
 const totalClicksDisplay = document.getElementById("totalClicks");
@@ -12,23 +12,23 @@ const cpsDisplay = document.getElementById("cps");
 const upgradeContainer = document.getElementById("upgradeContainer");
 const resetButton = document.getElementById("resetGame"); 
 
-// Load game on startup
+// Load game on startup.
 loadGame(); 
 
-// Click function
+// Click function.
 clicker.addEventListener('click', () => {
-    let additionalClicks = gameStats.amountPerClick;
+   let additionalClicks = gameStats.amountPerClick;
 
-    // Check for Double Trouble effect
-    if (upgrades[2].amount > 0) { 
+   // Check for Double Trouble effect.
+   if (upgrades[2].amount > 0) { 
        additionalClicks *= upgrades[2].effect.clickMultiplier; 
    }
 
-   // Regular click value application
+   // Regular click value application.
    gameStats.clicks += additionalClicks;
    gameStats.totalClicks += additionalClicks;
 
-   // Check if Golden Touch is active
+   // Check if Golden Touch is active.
    if (Math.random() < gameStats.goldenClickChance) {
        const goldenClickValue = additionalClicks * upgrades[3].effect.goldenClickMultiplier; 
        gameStats.clicks += goldenClickValue;
@@ -43,12 +43,12 @@ clicker.addEventListener('click', () => {
    saveGame();
 });
 
-// Update display function
+// Update display function.
 function updateDisplay() {
-    clicksDisplay.textContent = Math.floor(gameStats.clicks);
-    totalClicksDisplay.textContent = Math.floor(gameStats.totalClicks);
-    amountPerClickText.textContent = gameStats.amountPerClick.toFixed(1);
-    cpsDisplay.textContent = gameStats.autoClicksPerSecond.toFixed(1);
+   clicksDisplay.textContent = Math.floor(gameStats.clicks);
+   totalClicksDisplay.textContent = Math.floor(gameStats.totalClicks);
+   amountPerClickText.textContent = gameStats.amountPerClick.toFixed(1);
+   cpsDisplay.textContent = gameStats.autoClicksPerSecond.toFixed(1);
 }
 
 // Initial display update and check for available upgrades.
@@ -79,8 +79,7 @@ upgradeContainer.addEventListener('click', (event) => {
        const purchaseSuccessful = purchaseUpgrade(upgradeId, upgrades);
        
        updateDisplay(); 
-       upgrades.forEach(upgrade => updateUpgradeDisplay(upgrade));
-       
+        
        saveGame();
        
        if (!purchaseSuccessful) {
@@ -101,6 +100,3 @@ resetButton.addEventListener('click', () => {
        alert('Reset canceled.');
    }
 });
-
-// Exporting Game Stats for other modules.
-export { gameStats };

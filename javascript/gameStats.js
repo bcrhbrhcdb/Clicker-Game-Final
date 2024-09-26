@@ -1,3 +1,4 @@
+// Exporting Game Stats for other modules.
 export const gameStats = {
     clicks: 0,
     amountOfUpgrades: 0,
@@ -7,5 +8,5 @@ export const gameStats = {
     clickMultiplier: 1,
     autoClickMultiplier: 1,
     goldenClickChance: 0,
-    goldenClickMultiplier: 1
+    goldenClickMultiplier: 0, // Fixed syntax error here.
 };

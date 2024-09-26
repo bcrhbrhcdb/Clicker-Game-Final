@@ -1,20 +1,23 @@
 import { gameStats } from "./gameStats.js";
 import { upgrades } from "./upgrades.js";
-import { displayUpgrade } from "./upgradeFunctions.js"; // Import displayUpgrade function
+import { displayUpgrade } from "./upgradeFunctions.js"; 
 
 export function saveGame() {
     const saveData = {
         gameStats,
         upgrades
     };
+    
     localStorage.setItem('clickerGameSave', JSON.stringify(saveData));
+    
     console.log('Game saved!');
 }
 
 export function loadGame() {
     const savedData = localStorage.getItem('clickerGameSave');
+    
     if (savedData) {
-        const { gameStats: loadedGameStats, upgrades: loadedUpgrades } = JSON.parse(savedData);
+        const { gameStats : loadedGameStats, upgrades : loadedUpgrades } = JSON.parse(savedData);
         
         // Load game stats
         Object.assign(gameStats, loadedGameStats);
@@ -23,11 +26,10 @@ export function loadGame() {
         loadedUpgrades.forEach((loadedUpgrade) => {
             const upgrade = upgrades.find(u => u.id === loadedUpgrade.id);
             if (upgrade) {
-                upgrade.amount = loadedUpgrade.amount;
-                upgrade.cost = loadedUpgrade.cost; // Ensure cost is updated
-                upgrade.visible = loadedUpgrade.visible; // Ensure visibility is updated
+                // Update each property accordingly.
+                Object.assign(upgrade, loadedUpgrade);
                 
-                // If the upgrade is visible, display it
+                // If the upgraded is visible, display it.
                 if (upgrade.visible) {
                     displayUpgrade(upgrade, document.getElementById("upgradeContainer"), (id) => purchaseUpgrade(id, upgrades));
                 }
@@ -35,31 +37,32 @@ export function loadGame() {
         });
 
         console.log('Game loaded!');
-    } else {
-        console.log('No saved game found.');
-    }
+        
+   } else {
+       console.log('No saved game found.');
+   }
 }
 
 export function resetGame() {
-    // Reset game stats
-    gameStats.clicks = 0;
-    gameStats.totalClicks = 0;
-    gameStats.amountPerClick = 1;
-    gameStats.autoClicksPerSecond = 0;
-    gameStats.clickMultiplier = 1;
-    gameStats.goldenClickChance = 0;
-    gameStats.goldenClickMultiplier = 1;
-    gameStats.amountOfUpgrades = 0;
+   // Reset game stats.
+   Object.assign(gameStats, { 
+       clicks :0 , 
+       totalClicks :0 , 
+       amountPerClick :1 , 
+       autoClicksPerSecond :0 , 
+       clickMultiplier :1 , 
+       goldenClickChance :0 , 
+       goldenClickMultiplier :1 ,
+       amountOfUpgrades :0 
+   });
 
-    // Reset upgrades
-    upgrades.forEach(upgrade => {
-        upgrade.amount = 0;
-        upgrade.cost = Math.floor(upgrade.cost / upgrade.multiplyCost); // Reset cost to initial value
-        upgrade.visible = false; // Hide all upgrades
-    });
+   // Reset upgrades.
+   upgrades.forEach(upgrade => {
+       Object.assign(upgrade, { amount :0 , cost : Math.floor(upgrade.cost / upgrade.multiplyCost), visible : false });
+   });
 
-    // Clear saved data from localStorage
-    localStorage.removeItem('clickerGameSave');
+   // Clear saved data from localStorage.
+   localStorage.removeItem('clickerGameSave');
 
-    console.log('Game has been reset!');
+   console.log('Game has been reset!');
 }
