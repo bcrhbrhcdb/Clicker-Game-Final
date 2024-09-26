@@ -12,7 +12,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp.git"
+    "url": "git+https://github.com/bcrhbrhcdb/Clicker-Game-Final.git"
   },
   "keywords": [
     "none"
@@ -20,7 +20,7 @@
   "author": "Noob_k1ng",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp/issues"
+    "url": "https://github.com/bcrhbrhcdb/Clicker-Game-Final/issues"
   },
-  "homepage": "https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp#readme"
+  "homepage": "https://github.com/bcrhbrhcdb/Clicker-Game-Final#readme"
 }
