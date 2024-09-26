@@ -5,6 +5,7 @@ export const gameStats = {
     amountPerClick: 1,
     autoClicksPerSecond: 0,
     clickMultiplier: 1,
+    autoClickMultiplier: 1,
     goldenClickChance: 0,
     goldenClickMultiplier: 1
 };

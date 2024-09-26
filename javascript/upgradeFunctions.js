@@ -66,6 +66,8 @@ export function applyUpgradeEffect(upgrade) {
             // Ensure this adds correctly to auto-clicks per second
             gameStats.autoClicksPerSecond += upgrade.effect.autoClicksPerSecond; 
             break;
+            case upgradeTypes.INCREASEPASSIVE:
+                gameStats.autoClickMultiplier *= upgrade.effect.autoClickMultiplier
             
         case upgradeTypes.MULTIPLIER:
             // Apply multiplier effect properly to additional clicks only
