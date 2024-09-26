@@ -4,5 +4,23 @@
   },
   "dependencies": {
     "servor": "^4.0.2"
-  }
+  },
+  "name": "clicker-game",
+  "description": "[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp)",
+  "version": "0.0.1",
+  "main": "script.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Noob_k1ng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp/issues"
+  },
+  "homepage": "https://github.com/bcrhbrhcdb/stackblitz-starters-yfzhpp#readme"
 }
