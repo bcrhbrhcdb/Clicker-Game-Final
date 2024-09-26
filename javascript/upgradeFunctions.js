@@ -61,14 +61,17 @@ export function applyUpgradeEffect(upgrade) {
             // Update amount per click directly
             gameStats.amountPerClick += upgrade.effect.clickValue; 
             break;
+            
         case upgradeTypes.PASSIVE:
             // Ensure this adds correctly to auto-clicks per second
             gameStats.autoClicksPerSecond += upgrade.effect.autoClicksPerSecond; 
             break;
+            
         case upgradeTypes.MULTIPLIER:
-            // Apply multiplier effect properly
+            // Apply multiplier effect properly to amount per click
             gameStats.amountPerClick *= upgrade.effect.clickMultiplier; 
             break;
+            
         case upgradeTypes.SPECIAL:
             // Special effects for golden click chance etc.
             gameStats.goldenClickChance = upgrade.effect.goldenClickChance; 

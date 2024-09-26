@@ -16,8 +16,18 @@ loadGame(); // Call loadGame here
 
 // Click function
 clicker.addEventListener('click', () => {
-    gameStats.clicks += gameStats.amountPerClick;
-    gameStats.totalClicks += gameStats.amountPerClick;
+    // Check if Golden Touch is active
+    if (Math.random() < gameStats.goldenClickChance) {
+        const goldenClickValue = gameStats.amountPerClick * gameStats.goldenClickMultiplier;
+        gameStats.clicks += goldenClickValue;
+        gameStats.totalClicks += goldenClickValue;
+        console.log(`Golden Click! Earned ${goldenClickValue} clicks!`);
+    } else {
+        // Regular click value application if Golden Touch does not trigger
+        gameStats.clicks += gameStats.amountPerClick;
+        gameStats.totalClicks += gameStats.amountPerClick;
+    }
+    
     updateDisplay();
     checkUpgrades(gameStats.totalClicks, upgrades, upgradeContainer, (id) => purchaseUpgrade(id, upgrades));
     
@@ -49,20 +59,6 @@ setInterval(() => {
         saveGame();
     }
 }, 1000);
-
-// Golden click chance
-clicker.addEventListener('click', () => {
-    if (Math.random() < gameStats.goldenClickChance) {
-        const goldenClickValue = gameStats.amountPerClick * gameStats.goldenClickMultiplier;
-        gameStats.clicks += goldenClickValue;
-        gameStats.totalClicks += goldenClickValue;
-        console.log(`Golden Click! Earned ${goldenClickValue} clicks!`);
-        updateDisplay();
-        
-        // Save the game after a golden click
-        saveGame();
-    }
-});
 
 // Event delegation for upgrade purchases
 upgradeContainer.addEventListener('click', (event) => {
