@@ -49,13 +49,13 @@ export const upgrades = [
         id: 4,
         name: "Golden Touch",
         description: "40% chance of getting an additional click value times 10.",
-        cost: 10000,
+        cost: 1,
         multiplyCost: 1.40,
         amount: 0,
         visible: false,
         type: upgradeTypes.SPECIAL,
         effect: {
-            goldenClickChance: 0.40, // Chance to activate
+            goldenClickChance: 0.05, // Chance to activate
             goldenClickMultiplier: 10 // Multiplier for golden click
        }
    }
