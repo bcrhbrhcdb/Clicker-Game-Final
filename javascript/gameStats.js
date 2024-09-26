@@ -1,7 +1,10 @@
-// gameStats.js
 export const gameStats = {
     clicks: 0,
+    amountOfUpgrades: 0,
     totalClicks: 0,
     amountPerClick: 1,
-    amountOfUpgrades: 0
+    autoClicksPerSecond: 0,
+    clickMultiplier: 1,
+    goldenClickChance: 0,
+    goldenClickMultiplier: 1
 };
