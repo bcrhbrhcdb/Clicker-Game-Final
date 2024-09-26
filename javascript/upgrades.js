@@ -37,7 +37,7 @@ export const upgrades = [
         name: "Double Trouble",
         description: "Doubles the additional clicks you get from clicking and from upgrades.",
         cost: 1000,
-        multiplyCost: 100,
+        multiplyCost: 1.10, // Adjusted to be a reasonable multiplier
         amount: 0,
         visible: false,
         type: upgradeTypes.MULTIPLIER,

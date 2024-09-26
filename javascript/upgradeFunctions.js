@@ -68,7 +68,7 @@ export function applyUpgradeEffect(upgrade) {
             break;
             
         case upgradeTypes.MULTIPLIER:
-            // Apply multiplier effect properly to amount per click
+            // Apply multiplier effect properly to additional clicks only
             gameStats.amountPerClick *= upgrade.effect.clickMultiplier; 
             break;
             
@@ -84,8 +84,8 @@ export function updateUpgradeDisplay(upgrade) {
     const upgradeElement = document.getElementById(`upgrade-${upgrade.id}`);
     
     if (upgradeElement) {
-        // Update cost and owned amount in UI
-        upgradeElement.querySelector('p:nth-child(3)').textContent = `Cost: ${upgrade.cost} clicks`; 
-        upgradeElement.querySelector('p:nth-child(4)').textContent = `Owned: ${upgrade.amount}`; 
-    }
+         // Update cost and owned amount in UI
+         upgradeElement.querySelector('p:nth-child(3)').textContent = `Cost: ${upgrade.cost} clicks`; 
+         upgradeElement.querySelector('p:nth-child(4)').textContent = `Owned: ${upgrade.amount}`; 
+     }
 }

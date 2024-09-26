@@ -44,3 +44,55 @@ h1 {
   font-weight: bold;
   font-size: 1.5rem;
 }
+
+/* Flexbox for upgrades */
+#upgradeContainer {
+  display: flex; /* Use flexbox for horizontal layout */
+  flex-wrap: wrap; /* Allow wrapping if necessary */
+  justify-content: center; /* Center the upgrades */
+  gap: 10px; /* Space between upgrades */
+}
+
+.upgrade-button {
+    background-color: #337CA0; /* Primary color for buttons */
+    color: white; /* Text color */
+    padding: 10px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.upgrade-button:hover {
+    background-color: #3EC300; /* Change color on hover */
+}
+
+footer {
+    margin-top: 20px; /* Space above footer */
+    text-align: center; /* Center footer text */
+}
+
+button {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #E13700; /* Color for reset button */
+    color: white; /* Text color for reset button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #FF1D15; /* Change color on hover for reset button */
+}
+#upgradeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centering the container */
+}
+
+.upgrade-button {
+  padding: 8px; /* Smaller padding */
+  margin-right: 10px; /* Space between buttons */
+}
